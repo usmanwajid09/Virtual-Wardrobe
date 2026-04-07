@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>StyleIQ – Your Closet. Smarter.</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="style.css"/>
+<link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body>
+<canvas id="bg-cv"></canvas>
+
+<nav id="nav">
+  <a href="#home" class="logo"><img src="images/logo.png" alt="StyleIQ Logo" class="nav-logo-img"></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li><li><a href="#features">Features</a></li>
+    <li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-pill" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Early Access</button>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-left">
+    <div class="hero-issue" id="hero-iss">✦ AI Wardrobe Platform · 2026</div>
+    <h1 class="hero-h1" id="hero-h1">Your Closet,<br/><em>Reinvented</em><br/>by AI.</h1>
+    <p class="hero-desc" id="hero-desc">StyleIQ catalogs every garment you own and builds perfect daily outfits — adapting to weather, seasons, and any occasion.</p>
+    <div class="hero-actions" id="hero-btns">
+      <a href="#contact" class="btn-solid">Get Early Access →</a>
+      <a href="#features" class="btn-line">Explore Features</a>
+    </div>
+    <div class="hero-metrics" id="hero-met">
+      <div><div class="metric-val">80%</div><div class="metric-lab">of your wardrobe<br/>never worn</div></div>
+      <div><div class="metric-val">17m</div><div class="metric-lab">wasted daily<br/>choosing outfits</div></div>
+      <div><div class="metric-val">&lt;3s</div><div class="metric-lab">for StyleIQ to<br/>style your day</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-canvas-wrap"><canvas id="hero-cv"></canvas></div>
+    <div class="float-card" id="fc1">
+      <div class="fc-tag">✦ Today's Outfit · AI Generated</div>
+      <div class="fc-outfit"><div class="fc-dot">👔</div><div class="fc-outfit-info"><h4>Smart Casual Look</h4><p>White linen shirt + beige chinos + white sneakers</p></div></div>
+      <div class="fc-weather"><span>📍 Dubai · Today</span><span>☀️ <b>28°C Clear</b></span></div>
+      <div class="ai-bar"><div class="ai-dot"></div>AI matched 6 items from your wardrobe</div>
+    </div>
+    <div class="float-card card-2" id="fc2">
+      <div class="fc-tag">✦ Tonight · Dinner Date</div>
+      <div class="fc-outfit"><div class="fc-dot">🧥</div><div class="fc-outfit-info"><h4>Smart Evening Look</h4><p>Navy blazer + dark jeans + leather loafers</p></div></div>
+      <div class="ai-bar"><div class="ai-dot"></div>Perfect for a 7PM restaurant setting</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip"><div class="marquee-inner" id="mi">
+  <span>Virtual Wardrobe</span><span><em>AI Outfit Suggestions</em></span><span>Weather-Smart Styling</span><span><em>Occasion Intelligence</em></span><span>Style Coach Chat</span><span><em>Smart Shopping</em></span><span>Weekly Style Reports</span><span><em>Personal Style DNA</em></span>
+  <span>Virtual Wardrobe</span><span><em>AI Outfit Suggestions</em></span><span>Weather-Smart Styling</span><span><em>Occasion Intelligence</em></span><span>Style Coach Chat</span><span><em>Smart Shopping</em></span><span>Weekly Style Reports</span><span><em>Personal Style DNA</em></span>
+</div></div>
+
+<!-- FEATURES -->
+<section id="features" class="sec">
+  <div class="mw">
+    <div class="tc" style="margin-bottom:48px">
+      <div class="chip reveal-fade">Features</div>
+      <h2 class="sec-title"><span class="clip-wrap"><span class="clip-inner">Everything your wardrobe deserves.</span></span></h2>
+      <p class="sec-sub reveal-up">Six deeply integrated tools — from cataloging your first shirt to coaching your style DNA.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-cell big">
+        <div class="feat-icon-wrap">👗</div>
+        <div class="feat-big-inner"><h3>Virtual Closet Manager</h3><p>Photograph your clothes — AI auto-categorizes every item by type, color, fabric, and season. Your entire wardrobe, beautifully organized in minutes.</p><span class="feat-pill">Computer Vision AI</span></div>
+        <div class="feat-num">01</div>
+      </div>
+      <div class="feat-cell reveal-up" style="--d:.08s"><div class="feat-num">02</div><div class="feat-icon-wrap">☀️</div><h3>Weather-Smart Outfits</h3><p>Live forecast pulled every morning. 3 outfit suggestions matched to temperature, rain, and UV — all from what you own.</p><span class="feat-pill">Live Weather API</span></div>
+      <div class="feat-cell reveal-up" style="--d:.16s"><div class="feat-num">03</div><div class="feat-icon-wrap">🎉</div><h3>Occasion Styling</h3><p>Add any event — interview, wedding, gym — and get tailored outfit options with a full rationale for why each look works.</p><span class="feat-pill">Event Intelligence</span></div>
+      <div class="feat-cell reveal-up" style="--d:.24s"><div class="feat-num">04</div><div class="feat-icon-wrap">🤖</div><h3>AI Style Coach</h3><p>Chat with your personal AI stylist anytime. Ask anything — get expert answers powered by GPT-4o instantly.</p><span class="feat-pill">GPT-4o Powered</span></div>
+      <div class="feat-cell reveal-up" style="--d:.32s"><div class="feat-num">05</div><div class="feat-icon-wrap">📊</div><h3>Style Reports</h3><p>Weekly insights: most-worn items, untried combinations, and wardrobe gaps. Understand your style better than ever.</p><span class="feat-pill">Personal Analytics</span></div>
+      <div class="feat-cell reveal-up" style="--d:.40s"><div class="feat-num">06</div><div class="feat-icon-wrap">🛍️</div><h3>Smart Shopping</h3><p>StyleIQ spots the one missing piece that unlocks 20 new outfit combos and links you directly to it from your favourite stores.</p><span class="feat-pill">Affiliate Shopping</span></div>
+      <div class="feat-cell reveal-up" style="--d:.48s"><div class="feat-num">07</div><div class="feat-icon-wrap">🔄</div><h3>Smart Sync</h3><p>Automatically sync your outfits with your Google/Apple Calendar. Always be prepared for what's next.</p><span class="feat-pill">Calendar Integration</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EFFECT 1: SPINNING SHIRT -->
+<div id="shirt-wrap">
+  <div id="shirt-sticky">
+    <div class="shirt-stage">
+      <div class="shirt-orbit"><div class="shirt-orbit-dot"></div></div>
+      <!-- !! REPLACE svg with: <img id="shirt-svg" src="your-shirt.png"> -->
+      <img id="shirt-svg" src="images/shirt.png" style="width:300px; height:300px; object-fit:contain; filter:drop-shadow(0 20px 40px rgba(13,92,58,.2)); position:relative; z-index:2; will-change:transform;" alt="Spinning Shirt">
+      <div class="shirt-shadow" id="shirt-shadow"></div>
+      <div id="shirt-pbar"></div>
+    </div>
+    <div class="shirt-panels">
+      <div id="sc-wrap"><b id="sc-cur">1</b> / 5</div>
+      <div class="shirt-panel active" id="sp0"><div class="sp-eyebrow">Feature 01</div><h2 class="sp-title">Your entire wardrobe, digitized.</h2><p class="sp-body">Photograph any garment. StyleIQ's computer vision instantly classifies it by type, color, fabric weight, and season.</p><div class="sp-tags"><span class="sp-tag">Computer Vision</span><span class="sp-tag">Auto-Sort</span></div></div>
+      <div class="shirt-panel" id="sp1"><div class="sp-eyebrow">Feature 02</div><h2 class="sp-title">Weather-perfect outfits, daily.</h2><p class="sp-body">Every morning StyleIQ checks the live forecast and builds 3 outfit suggestions from your wardrobe — matched to temperature and conditions.</p><div class="sp-tags"><span class="sp-tag">Live Weather</span><span class="sp-tag">Daily AI</span></div></div>
+      <div class="shirt-panel" id="sp2"><div class="sp-eyebrow">Feature 03</div><h2 class="sp-title">Dressed for every occasion.</h2><p class="sp-body">Add any event — job interview, wedding, date night — and get complete looks with a full explanation of why each one works.</p><div class="sp-tags"><span class="sp-tag">Event Styling</span><span class="sp-tag">Occasion AI</span></div></div>
+      <div class="shirt-panel" id="sp3"><div class="sp-eyebrow">Feature 04</div><h2 class="sp-title">Your AI stylist, 24/7.</h2><p class="sp-body">Chat with a GPT-4o stylist that knows your wardrobe. "How do I style my yellow blazer?" — answered instantly.</p><div class="sp-tags"><span class="sp-tag">GPT-4o</span><span class="sp-tag">Style Chat</span></div></div>
+      <div class="shirt-panel" id="sp4"><div class="sp-eyebrow">Feature 05</div><h2 class="sp-title">Shop smarter, not more.</h2><p class="sp-body">StyleIQ finds the one missing piece that unlocks 20 new outfit combinations and links you directly to it from your favourite stores.</p><div class="sp-tags"><span class="sp-tag">Gap Analysis</span><span class="sp-tag">Smart Shop</span></div></div>
+      <div class="shirt-dots"><div class="s-dot on" id="sd0"></div><div class="s-dot" id="sd1"></div><div class="s-dot" id="sd2"></div><div class="s-dot" id="sd3"></div><div class="s-dot" id="sd4"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- EFFECT 2: WARDROBE DOOR -->
+<div id="wardrobe-wrap">
+  <div id="wardrobe-sticky">
+    <div class="wardrobe-scene">
+      <div class="wardrobe-title"><h2>Open your perfect wardrobe.</h2></div>
+      <div class="wardrobe-side-cards wsc-left"><div class="wsc" id="wsc0"><div class="wsc-num">84</div><div class="wsc-lab">Items cataloged</div></div><div class="wsc" id="wsc1"><div class="wsc-num">247</div><div class="wsc-lab">Outfits generated</div></div></div>
+      <div class="wardrobe-side-cards wsc-right"><div class="wsc" id="wsc2"><div class="wsc-num">97%</div><div class="wsc-lab">Style accuracy</div></div><div class="wsc" id="wsc3"><div class="wsc-num">3s</div><div class="wsc-lab">Outfit built in</div></div></div>
+      <div class="wardrobe-back">
+        <!-- ambient glow orbs -->
+        <div class="wb-orb wb-orb1"></div>
+        <div class="wb-orb wb-orb2"></div>
+        <div class="wardrobe-interior" id="wardrobe-int">
+          <!-- rail -->
+          <div class="wardrobe-rail">
+            <div class="rail-hook"></div>
+          </div>
+          <!-- hanging clothes -->
+          <div class="w-clothes-row">
+            <div class="w-hang-item" id="wh0">
+              <div class="w-hanger">
+                <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><path d="M30 4 Q30 0 34 0 Q38 0 38 4 Q38 8 30 10 Q0 20 4 28 L56 28 Q60 20 30 10Z" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linejoin="round"/><circle cx="30" cy="2" r="2" fill="#C9A84C"/></svg>
+              </div>
+              <div class="w-garment"><img src="images/shirt.png" alt="Shirt"/></div>
+              <div class="w-tag">Casual Shirt</div>
+            </div>
+            <div class="w-hang-item" id="wh1">
+              <div class="w-hanger">
+                <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><path d="M30 4 Q30 0 34 0 Q38 0 38 4 Q38 8 30 10 Q0 20 4 28 L56 28 Q60 20 30 10Z" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linejoin="round"/><circle cx="30" cy="2" r="2" fill="#C9A84C"/></svg>
+              </div>
+              <div class="w-garment"><img src="images/blazer.png" alt="Blazer"/></div>
+              <div class="w-tag">Navy Blazer</div>
+            </div>
+            <div class="w-hang-item" id="wh2">
+              <div class="w-hanger">
+                <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><path d="M30 4 Q30 0 34 0 Q38 0 38 4 Q38 8 30 10 Q0 20 4 28 L56 28 Q60 20 30 10Z" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linejoin="round"/><circle cx="30" cy="2" r="2" fill="#C9A84C"/></svg>
+              </div>
+              <div class="w-garment"><img src="images/evening_dress.png" alt="Evening Dress"/></div>
+              <div class="w-tag">Evening Dress</div>
+            </div>
+            <div class="w-hang-item" id="wh3">
+              <div class="w-hanger">
+                <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><path d="M30 4 Q30 0 34 0 Q38 0 38 4 Q38 8 30 10 Q0 20 4 28 L56 28 Q60 20 30 10Z" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linejoin="round"/><circle cx="30" cy="2" r="2" fill="#C9A84C"/></svg>
+              </div>
+              <div class="w-garment"><img src="images/gold_jacket.png" alt="Gold Jacket"/></div>
+              <div class="w-tag">Gold Jacket</div>
+            </div>
+            <div class="w-hang-item" id="wh4">
+              <div class="w-hanger">
+                <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><path d="M30 4 Q30 0 34 0 Q38 0 38 4 Q38 8 30 10 Q0 20 4 28 L56 28 Q60 20 30 10Z" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linejoin="round"/><circle cx="30" cy="2" r="2" fill="#C9A84C"/></svg>
+              </div>
+              <div class="w-garment"><img src="images/chinos.png" alt="Chinos"/></div>
+              <div class="w-tag">Beige Chinos</div>
+            </div>
+          </div>
+          <!-- reveal text -->
+          <div class="wardrobe-reveal-text"><h3>84 items. Infinite looks.</h3><p>StyleIQ knows every single one.</p></div>
+        </div>
+      </div>
+      <div class="wardrobe-doors"><div class="door door-left" id="door-left"><div class="door-handle"></div></div><div class="door door-right" id="door-right"><div class="door-handle"></div></div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- EFFECT 3: HORIZONTAL LOOKBOOK -->
+<div id="lookbook-wrap">
+  <div id="lookbook-track">
+    <div class="lb-slide"><div class="lb-img" style="background:linear-gradient(135deg,#0D5C3A,#178A56)"><div class="lb-img-ph"><img src="images/casual.png" style="width:100%; height:100%; object-fit:cover;"></div></div><div class="lb-text"><div class="lb-idx">01</div><div class="lb-chip">Morning · Casual</div><h2 class="lb-title">Effortless<br/>everyday style.</h2><p class="lb-body">StyleIQ reads your weather, calendar, and mood — and picks the perfect casual look from your closet before you've had coffee.</p></div></div>
+    <div class="lb-slide"><div class="lb-text-r"><div class="lb-idx">02</div><div class="lb-chip">Work · Smart Casual</div><h2 class="lb-title">Dressed to<br/>impress, always.</h2><p class="lb-body">From job interviews to client meetings, StyleIQ knows exactly which outfit projects the right energy — built entirely from what you own.</p></div><div class="lb-img" style="background:linear-gradient(135deg,#1e3a5f,#1d4ed8)"><div class="lb-img-ph"><img src="images/work.png" style="width:100%; height:100%; object-fit:cover;"></div></div></div>
+    <div class="lb-slide"><div class="lb-img" style="background:linear-gradient(135deg,#4c1d95,#7c3aed)"><div class="lb-img-ph"><img src="images/evening.png" style="width:100%; height:100%; object-fit:cover;"></div></div><div class="lb-text"><div class="lb-idx">03</div><div class="lb-chip">Evening · Formal</div><h2 class="lb-title">Every occasion,<br/>perfectly dressed.</h2><p class="lb-body">Add a dinner date to your calendar and StyleIQ crafts a show-stopping evening look in under 3 seconds.</p></div></div>
+    <div class="lb-slide"><div class="lb-text-r"><div class="lb-idx">04</div><div class="lb-chip">Weekend · Relaxed</div><h2 class="lb-title">Weekends done<br/>right.</h2><p class="lb-body">Brunch, errands, afternoon walk — StyleIQ builds relaxed, stylish weekend outfits that feel intentional without any effort.</p></div><div class="lb-img" style="background:linear-gradient(135deg,#C9A84C,#d97706)"><div class="lb-img-ph"><img src="images/weekend.png" style="width:100%; height:100%; object-fit:cover;"></div></div></div>
+  </div>
+  <div id="lb-prog"></div>
+  <div class="lb-counter"><b id="lb-cur">1</b> / 4</div>
+  <div class="lb-hint" id="lb-hint"><span>Scroll</span><span class="lb-arrow">→</span></div>
+</div>
+
+<!-- EFFECT 4: WASHING LINE -->
+<div id="clothesline-wrap">
+  <div id="clothesline-sticky">
+    <div class="cl-title"><div class="chip">Your Collection</div><h2>Everything you own,<br/><em style="color:var(--emerald)">beautifully organized.</em></h2></div>
+    <div class="cl-rope"></div>
+    <div id="cl-track">
+      <!-- Clothesline garments using AI-generated images -->
+      <div class="cl-item" style="--sw:3.2s;--sd:0s"><div class="cl-peg"></div><div class="cl-garment"><img src="images/shirt.png" alt="Casual Shirt"></div><div class="cl-tag">Casual Shirt</div></div>
+      <div class="cl-item" style="--sw:2.8s;--sd:.3s"><div class="cl-peg" style="background:#0D5C3A"></div><div class="cl-garment"><img src="images/blazer.png" alt="Blazer"></div><div class="cl-tag">Blazer</div></div>
+      <div class="cl-item" style="--sw:3.5s;--sd:.6s"><div class="cl-peg" style="background:#7c2d12"></div><div class="cl-garment"><img src="images/chinos.png" alt="Chinos"></div><div class="cl-tag">Chinos</div></div>
+      <div class="cl-item" style="--sw:3s;--sd:.9s"><div class="cl-peg" style="background:#4c1d95"></div><div class="cl-garment"><img src="images/evening_dress.png" alt="Evening Dress"></div><div class="cl-tag">Evening Dress</div></div>
+      <div class="cl-item" style="--sw:2.6s;--sd:1.2s"><div class="cl-peg" style="background:#C9A84C"></div><div class="cl-garment"><img src="images/gold_jacket.png" alt="Gold Jacket"></div><div class="cl-tag">Gold Jacket</div></div>
+      <div class="cl-item" style="--sw:3.3s;--sd:1.5s"><div class="cl-peg" style="background:#0e7490"></div><div class="cl-garment"><img src="images/denim.png" alt="Denim"></div><div class="cl-tag">Denim</div></div>
+      <div class="cl-item" style="--sw:2.9s;--sd:1.8s"><div class="cl-peg" style="background:#be185d"></div><div class="cl-garment"><img src="images/summer_dress.png" alt="Summer Dress"></div><div class="cl-tag">Summer Dress</div></div>
+      <div class="cl-item" style="--sw:3.2s;--sd:.2s"><div class="cl-peg"></div><div class="cl-garment"><img src="images/shirt.png" alt="Casual Shirt"></div><div class="cl-tag">Casual Shirt</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- EFFECT 5: TAILOR CUT -->
+<div id="tailor-wrap">
+  <div id="tailor-sticky">
+    <div class="tailor-content">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px">StyleIQ · Early Access</div>
+      <h2>The smarter way<br/>to get dressed.</h2>
+      <p>Join early users already waking up to a perfectly styled outfit every morning — built from clothes they already own.</p>
+      <div class="tailor-stats">
+        <div class="ts-item"><div class="ts-val">50K+</div><div class="ts-lab">Outfits generated</div></div>
+        <div class="ts-item"><div class="ts-val">17min</div><div class="ts-lab">Saved every morning</div></div>
+        <div class="ts-item"><div class="ts-val">80%</div><div class="ts-lab">Wardrobe utilised</div></div>
+      </div>
+      <a href="#contact" class="tailor-cta" id="tailor-cta">Join the Waitlist →</a>
+    </div>
+    <div class="tailor-fabric">
+      <svg id="tailor-clip-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <defs><clipPath id="tc" clipPathUnits="userSpaceOnUse"><rect id="tcr" x="0" y="0" width="10000" height="10000"/></clipPath></defs>
+        <rect x="0" y="0" width="10000" height="10000" fill="var(--paper)" clip-path="url(#tc)"/>
+        <g stroke="rgba(14,14,14,.035)" stroke-width="1"><line x1="0" y1="25%" x2="10000" y2="25%"/><line x1="0" y1="50%" x2="10000" y2="50%"/><line x1="0" y1="75%" x2="10000" y2="75%"/><line x1="25%" y1="0" x2="25%" y2="10000"/><line x1="50%" y1="0" x2="50%" y2="10000"/><line x1="75%" y1="0" x2="75%" y2="10000"/></g>
+      </svg>
+    </div>
+    <div id="tailor-thread"></div>
+    <svg id="tailor-scissors" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="14" cy="14" r="8" fill="none" stroke="var(--champ)" stroke-width="2.5"/>
+      <circle cx="14" cy="34" r="8" fill="none" stroke="var(--champ)" stroke-width="2.5"/>
+      <circle cx="14" cy="14" r="3" fill="var(--champ)"/><circle cx="14" cy="34" r="3" fill="var(--champ)"/>
+      <line x1="20" y1="10" x2="44" y2="4" stroke="var(--champ)" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="20" y1="38" x2="44" y2="44" stroke="var(--champ)" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+</div>
+
+<!-- WINDMILL -->
+<div id="pin-windmill-wrap">
+  <div id="pin-windmill">
+    <div class="pin-ring" style="width:340px;height:340px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+    <div class="pin-ring" style="width:480px;height:480px;top:50%;left:50%;transform:translate(-50%,-50%);border-color:rgba(201,168,76,.06)"></div>
+    <div class="pin-ring" style="width:640px;height:640px;top:50%;left:50%;transform:translate(-50%,-50%);border-color:rgba(255,255,255,.02)"></div>
+    <div class="pin-label">Scroll to explore StyleIQ</div>
+    <div class="pin-glow"></div>
+    <svg id="pin-windmill-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="96" fill="none" stroke="rgba(13,92,58,.4)" stroke-width="1"/>
+      <path d="M100 28C100 18 112 14 116 22C120 30 112 36 100 40" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M100 40L60 90Q40 108 52 118Q64 128 100 118Q136 128 148 118Q160 108 140 90Z" fill="none" stroke="#0D5C3A" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M100 40L60 90Q40 108 52 118Q64 128 100 118Q136 128 148 118Q160 108 140 90Z" fill="rgba(13,92,58,.15)"/>
+      <circle cx="100" cy="100" r="5" fill="#C9A84C"/><circle cx="100" cy="100" r="2.5" fill="#fff"/>
+      <circle cx="100" cy="8" r="3" fill="#C9A84C" opacity=".7"/><circle cx="192" cy="100" r="3" fill="#0D5C3A" opacity=".7"/>
+      <circle cx="100" cy="192" r="3" fill="#C9A84C" opacity=".7"/><circle cx="8" cy="100" r="3" fill="#0D5C3A" opacity=".7"/>
+    </svg>
+    <div class="pin-steps">
+      <div class="pin-step left" id="ps0"><div class="ps-num">01</div><div class="ps-chip">Virtual Closet</div><div class="ps-title">Your wardrobe, fully digitized</div><div class="ps-body">Photograph any garment — AI auto-classifies by type, color, fabric, and season in seconds.</div></div>
+      <div class="pin-step right" id="ps1"><div class="ps-num">02</div><div class="ps-chip">Weather Intelligence</div><div class="ps-title">Dressed for the day, always</div><div class="ps-body">Live forecast + your wardrobe = 3 perfect outfit suggestions every single morning.</div></div>
+      <div class="pin-step left" id="ps2"><div class="ps-num">03</div><div class="ps-chip">Occasion Styling</div><div class="ps-title">Right look for every event</div><div class="ps-body">Add an event and StyleIQ builds complete looks — interview, wedding, date night, gym.</div></div>
+      <div class="pin-step right" id="ps3"><div class="ps-num">04</div><div class="ps-chip">AI Style Coach</div><div class="ps-title">Your stylist, 24/7</div><div class="ps-body">Chat with GPT-4o trained on your wardrobe. Ask anything, get expert answers instantly.</div></div>
+    </div>
+    <div class="pin-progress"><div class="pin-dot on" id="pd0"></div><div class="pin-dot" id="pd1"></div><div class="pin-dot" id="pd2"></div><div class="pin-dot" id="pd3"></div></div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="sec sec-alt">
+  <div class="how-wrap">
+    <div>
+      <div class="chip reveal-fade">How It Works</div>
+      <h2 class="sec-title"><span class="clip-wrap"><span class="clip-inner">Up and running in minutes.</span></span></h2>
+      <p class="sec-sub reveal-up">Four simple steps from download to your first AI-styled outfit.</p>
+      <div>
+        <div class="h-step reveal-left" style="--d:0s"><div class="h-num">1</div><div><h4>Photograph Your Clothes</h4><p>Snap each garment with your phone. AI auto-classifies every piece by type, color, season, and fabric weight.</p></div></div>
+        <div class="h-step reveal-left" style="--d:.12s"><div class="h-num">2</div><div><h4>Set Your Style Profile</h4><p>Answer 5 quick questions about your lifestyle, preferences, and the occasions you dress for most.</p></div></div>
+        <div class="h-step reveal-left" style="--d:.24s"><div class="h-num">3</div><div><h4>Get Daily Outfit Suggestions</h4><p>Every morning: 3 weather-adapted, occasion-aware outfits built entirely from your own wardrobe.</p></div></div>
+        <div class="h-step reveal-left" style="--d:.36s"><div class="h-num">4</div><div><h4>Swipe, Wear &amp; Refine</h4><p>Accept or reject looks. StyleIQ learns your taste and becomes more accurate with every swipe.</p></div></div>
+      </div>
+    </div>
+    <div class="phone-scene">
+      <div class="phone-glow-bg"></div>
+      <div class="phone" id="phonemock">
+        <div class="p-notch"></div>
+        <div class="p-top">My Wardrobe · 84 items</div>
+        <div class="p-grid">
+          <div class="p-item" style="background:linear-gradient(135deg,#1e3a5f,#1d4ed8)">👔 Shirts</div>
+          <div class="p-item" style="background:linear-gradient(135deg,#4c1d95,#6d28d9)">👗 Dresses</div>
+          <div class="p-item" style="background:linear-gradient(135deg,#0D5C3A,#178A56)">🧥 Jackets</div>
+          <div class="p-item" style="background:linear-gradient(135deg,#7c2d12,#c2410c)">👖 Bottoms</div>
+        </div>
+        <div class="p-weather"><span>📍 Dubai · Today</span><span>☀️ <b>28°C</b></span></div>
+        <div class="p-ai"><div class="p-ai-tag">✦ AI Outfit · Today</div><p>White linen shirt + beige chinos + white sneakers ☀️</p></div>
+        <div class="p-ai2"><div class="p-ai-tag">✦ Tonight · Dinner</div><p>Navy blazer + white tee + dark jeans + loafers 🌙</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec">
+  <div class="mw">
+    <div style="margin-bottom:44px">
+      <div class="chip reveal-fade">About Us</div>
+      <h2 class="sec-title"><span class="clip-wrap"><span class="clip-inner">Styled by humans.</span></span><br/><span class="clip-wrap"><span class="clip-inner">Powered by AI.</span></span></h2>
+      <p class="sec-sub reveal-up">We're fashion lovers and engineers who got tired of standing in front of full wardrobes with nothing to wear.</p>
+    </div>
+    <div class="team-row">
+      <div class="t-card" style="--d:0s; margin-top:0">
+        <div class="t-top" style="background:linear-gradient(135deg,#0D5C3A,#178A56)"><div class="t-initials">UW</div></div>
+        <div class="t-body"><div class="t-name">Usman Wajid</div><div class="t-role">CEO &amp; Founder</div><div class="t-bio">Former fashion editor turned tech founder. Making great style accessible to everyone.</div></div>
+      </div>
+      <div class="t-card" style="--d:.1s; margin-top:48px">
+        <div class="t-top" style="background:linear-gradient(135deg,#1e3a5f,#1d4ed8)"><div class="t-initials">AM</div></div>
+        <div class="t-body"><div class="t-name">Ahmad Masood</div><div class="t-role">CTO &amp; Tech Lead</div><div class="t-bio">Ex-Google AI engineer. Leads our computer vision and LLM infrastructure.</div></div>
+      </div>
+      <div class="t-card" style="--d:.2s; margin-top:96px">
+        <div class="t-top" style="background:linear-gradient(135deg,#C9A84C,#d97706)"><div class="t-initials">AR</div></div>
+        <div class="t-body"><div class="t-name">Abdulrehman</div><div class="t-role">COO &amp; Operations</div><div class="t-bio">Built operations at two successful consumer apps. Obsessed with great UX.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES / FLOATING CARDS -->
+<section id="values" class="sec sec-alt">
+  <div class="mw">
+    <div class="tc" style="margin-bottom:52px">
+      <div class="chip reveal-fade">Our Values</div>
+      <h2 class="sec-title"><span class="clip-wrap"><span class="clip-inner">Built on principles</span></span><br/><span class="clip-wrap"><span class="clip-inner">that matter.</span></span></h2>
+      <p class="sec-sub reveal-up">The beliefs that shape every feature, decision, and line of code inside StyleIQ.</p>
+    </div>
+    <div class="vals">
+      <div class="val float-val" id="fv0" style="--d:0s"><h4>♻️ Wear More, Buy Less</h4><p>The most sustainable wardrobe is the one you already own. Our AI helps you maximise every piece.</p></div>
+      <div class="val float-val" id="fv1" style="--d:.12s"><h4>🧠 AI That Learns You</h4><p>StyleIQ gets smarter with every swipe. The more you use it, the more personal your suggestions become.</p></div>
+      <div class="val float-val" id="fv2" style="--d:.24s"><h4>🔒 Your Style, Your Data</h4><p>We never sell your data. Your wardrobe and style profile belong entirely to you — always private.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec sec-dark">
+  <div class="mw">
+    <div class="tc" style="margin-bottom:50px">
+      <div class="chip reveal-fade">Contact</div>
+      <h2 class="sec-title" style="color:#fff"><span class="clip-wrap"><span class="clip-inner">Let's get you styled.</span></span></h2>
+      <p class="sec-sub reveal-up">Join the waitlist, request a demo, or reach out — we reply within 24 hours.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="ci reveal-left">
+        <h3>We'd love to hear from you.</h3>
+        <p>Whether you're excited to try StyleIQ, want to partner with us, or are a journalist — our inbox is always open.</p>
+        <div class="ci-row"><span class="ci-icon">📧</span>hello@styleiq.app</div>
+        <div class="ci-row"><span class="ci-icon">🌐</span>styleiq.vercel.app</div>
+        <div class="ci-row"><span class="ci-icon">📍</span>Lahore, Pakistan · Remote-first</div>
+        <div class="ci-row"><span class="ci-icon">📸</span>@styleiq.app</div>
+        <div class="early"><div class="etag">🎁 Early Access Perk</div><p>First 1,000 users get Style Pro free for 3 months. Only 340 spots left.</p></div>
+      </div>
+      <div class="reveal-right">
+        <div class="fg"><label class="flabel">Full Name</label><input type="text" placeholder="Your name"/></div>
+        <div class="fg"><label class="flabel">Email Address</label><input type="email" placeholder="you@email.com"/></div>
+        <div class="fg"><label class="flabel">I'm interested in</label><select><option>Early Access – Free Plan</option><option>Early Access – Style+ Plan</option><option>Early Access – Style Pro</option><option>Brand / Retail Partnership</option><option>Press &amp; Media Inquiry</option><option>Investor Relations</option></select></div>
+        <div class="fg"><label class="flabel">Message (optional)</label><textarea placeholder="Tell us about yourself..."></textarea></div>
+        <button class="f-send" id="fsend">Join the Waitlist →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="#home" class="logo"><div class="logo-box">S</div><div class="logo-word" style="color:#fff">Style<span>IQ</span></div></a>
+  <div class="foot-r"><a href="#home">Home</a><a href="#features">Features</a><a href="#how">How It Works</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+  <div class="foot-copy">© 2026 StyleIQ. All rights reserved.</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

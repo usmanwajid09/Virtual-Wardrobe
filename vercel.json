@@ -1,0 +1,9 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/plan",
+      "destination": "/business_plan.html"
+    }
+  ]
+}
