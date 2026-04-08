@@ -19,9 +19,10 @@ app.use('/api/events', require('./routes/events'));
 app.use('/api/login', require('./routes/login'));
 app.use('/api/outfits', require('./routes/outfits'));
 app.use('/api/outfitClothes', require('./routes/outfitClothes'));
+app.use('/api/chat', require('./routes/chat'));
 
 // Default fallback to index.html for unknown frontend routes
-app.get('*', (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 

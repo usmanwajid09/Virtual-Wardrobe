@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleIQ Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dash-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">Style<span>IQ</span> <span class="badge">PRO</span></div>
+            <nav class="nav-links">
+                <a href="#" class="active" data-tab="wardrobe">📸 My Wardrobe</a>
+                <a href="#" data-tab="outfits">👔 Outfits & Suggestions</a>
+                <a href="#" data-tab="events">📅 Events Calendar</a>
+                <a href="#" data-tab="stylist">🤖 AI Stylist Coach</a>
+            </nav>
+            <div class="profile-chip">
+                <div class="avatar">U</div>
+                <div class="info">
+                    <strong>Usman Wajid</strong>
+                    <span>Style Pro Subscriber</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Wardrobe Tab -->
+            <section id="tab-wardrobe" class="tab-pane active">
+                <div class="header-flex">
+                    <div>
+                        <h2>Your Collection</h2>
+                        <p>Digitally cataloged items dynamically loaded from the API.</p>
+                    </div>
+                    <button class="btn-primary" onclick="document.getElementById('add-modal').style.display='flex'">+ Add New Garment</button>
+                </div>
+                <div class="grid-wardrobe" id="clothes-grid">
+                    <!-- Javascript will fetch from /api/clothes and inject realistic clothes -->
+                </div>
+            </section>
+
+            <!-- Outfits Tab -->
+            <section id="tab-outfits" class="tab-pane">
+                <h2>Generated Outfits</h2>
+                <p>AI suggestions based on your wardrobe.</p>
+                <div class="outfit-suggestions" id="outfits-grid">
+                    <!-- Javascript will fetch from /api/outfits -->
+                </div>
+            </section>
+
+            <!-- Events Tab -->
+            <section id="tab-events" class="tab-pane">
+                <div class="header-flex">
+                    <div>
+                        <h2>Events Calendar</h2>
+                        <p>Tell the AI your plans so it can style you appropriately.</p>
+                    </div>
+                    <button class="btn-primary" onclick="alert('Demo: Event modal appears')">+ Add Event</button>
+                </div>
+                <div class="event-list" id="events-grid">
+                    <div class="event-row">
+                        <div class="e-date">
+                            <strong>15</strong><span>Nov</span>
+                        </div>
+                        <div class="e-details">
+                            <h4>Job Interview</h4>
+                            <p>Formal business attire requested. Weather: 22°C Clear.</p>
+                        </div>
+                        <button class="btn-outline">Generate Look</button>
+                    </div>
+                    <div class="event-row">
+                        <div class="e-date">
+                            <strong>18</strong><span>Nov</span>
+                        </div>
+                        <div class="e-details">
+                            <h4>Friend's Wedding</h4>
+                            <p>Evening reception outdoors. Weather: 18°C Chilly.</p>
+                        </div>
+                        <button class="btn-outline">Generate Look</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Stylist Tab -->
+            <section id="tab-stylist" class="tab-pane">
+                <h2>StyleIQ AI Coach</h2>
+                <p>Chat with your personal GPT-powered stylist trained on your wardrobe.</p>
+                <div class="chat-container">
+                    <div class="chat-history" id="chat-history">
+                        <div class="msg ai">Hello! I'm your StyleIQ AI. What are we dressing for today?</div>
+                    </div>
+                    <form class="chat-input-area" id="chat-form">
+                        <input type="text" id="chat-input" placeholder="e.g. 'What should I wear for a wedding this weekend?'" autocomplete="off" required>
+                        <button type="submit" class="btn-primary">Send</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for adding garment -->
+    <div id="add-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h3>Add New Garment</h3>
+            <form id="add-cloth-form">
+                <input type="text" id="add-name" placeholder="Name (e.g. Vintage Leather Jacket)" required>
+                <input type="text" id="add-type" placeholder="Type (e.g. Outerwear)" required>
+                <input type="text" id="add-color" placeholder="Color (e.g. Brown)" required>
+                <input type="text" id="add-brand" placeholder="Brand / Origin">
+                <select id="add-season">
+                    <option value="All">All Season</option>
+                    <option value="Summer">Summer</option>
+                    <option value="Winter">Winter</option>
+                </select>
+                <div style="display:flex; justify-content:flex-end; gap: 12px; margin-top:20px;">
+                    <button type="button" class="btn-secondary" onclick="document.getElementById('add-modal').style.display='none'">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

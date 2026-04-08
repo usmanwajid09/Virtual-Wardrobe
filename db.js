@@ -19,8 +19,8 @@ const poolPromise = new sql.ConnectionPool(config)
     return pool;
   })
   .catch(err => {
-    console.error('Database Connection Failed! Bad Config: ', err);
-    process.exit(1);
+    console.error('Database Connection Failed! Bad Config: ', err.message);
+    return null;
   });
 
 module.exports = poolPromise;

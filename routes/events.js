@@ -1,89 +1,63 @@
 const express = require('express');
 const router = express.Router();
 const sql = require('mssql');
-const pool = require('../db');
 const authenticateToken = require('../middleware/auth');
+const poolPromise = require('../db');
 
-// CREATE Event
-router.post('/', authenticateToken, async (req, res) => {
-  const user_id = req.user.user_id;
-  const { event_name, event_date } = req.body;
-  try {
-    const request = (await pool).request();
-    request.input('user_id', sql.Int, user_id);
-    request.input('event_name', sql.VarChar, event_name);
-    request.input('event_date', sql.Date, event_date);
-    await request.query('INSERT INTO Events (user_id, event_name, event_date) VALUES (@user_id, @event_name, @event_date)');
-    res.status(201).json({ message: 'Event created' });
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to create event', details: err.message });
-  }
-});
+let mockEvents = [
+    { event_id: 1, user_id: 1, event_name: "Paris Fashion Week", event_date: "2026-11-15", location: "Paris", type: "Formal" },
+    { event_id: 2, user_id: 1, event_name: "Dinner Date", event_date: "2026-11-18", location: "Downtown", type: "Evening" },
+    { event_id: 3, user_id: 1, event_name: "Board Meeting", event_date: "2026-12-01", location: "Office", type: "Business" }
+];
 
-// READ All Events
+let nextEventId = 4;
+
+// GET /api/events
 router.get('/', authenticateToken, async (req, res) => {
-  const user_id = req.user.user_id;
-  try {
-    const request = (await pool).request();
-    request.input('user_id', sql.Int, user_id);
-    const result = await request.query('SELECT * FROM Events WHERE user_id = @user_id');
-    res.json(result.recordset);
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch events', details: err.message });
-  }
+    const user_id = req.user.user_id;
+
+    const pool = await poolPromise;
+    if (!pool) {
+        const userEvents = mockEvents.filter(e => e.user_id === user_id);
+        return res.json(userEvents);
+    }
+
+    try {
+        const request = pool.request();
+        request.input('user_id', sql.Int, user_id);
+        const result = await request.query('SELECT * FROM Events WHERE user_id = @user_id ORDER BY event_date ASC');
+        res.json(result.recordset);
+    } catch (err) {
+        res.status(500).json({ error: 'Failed', details: err.message });
+    }
 });
 
-// READ Single Event
-router.get('/:id', authenticateToken, async (req, res) => {
-  const user_id = req.user.user_id;
-  const event_id = parseInt(req.params.id);
-  try {
-    const request = (await pool).request();
-    request.input('user_id', sql.Int, user_id);
-    request.input('event_id', sql.Int, event_id);
-    const result = await request.query('SELECT * FROM Events WHERE event_id = @event_id AND user_id = @user_id');
-    if (result.recordset.length === 0) return res.status(404).json({ message: 'Event not found' });
-    res.json(result.recordset[0]);
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch event', details: err.message });
-  }
-});
+// POST /api/events
+router.post('/', authenticateToken, async (req, res) => {
+    const user_id = req.user.user_id;
+    const { event_name, event_date, location, type } = req.body;
 
-// UPDATE Event
-router.put('/:id', authenticateToken, async (req, res) => {
-  const user_id = req.user.user_id;
-  const event_id = parseInt(req.params.id);
-  const { event_name, event_date } = req.body;
-  try {
-    const request = (await pool).request();
-    request.input('user_id', sql.Int, user_id);
-    request.input('event_id', sql.Int, event_id);
-    request.input('event_name', sql.VarChar, event_name);
-    request.input('event_date', sql.Date, event_date);
-    await request.query(`
-      UPDATE Events SET event_name = @event_name, event_date = @event_date
-      WHERE event_id = @event_id AND user_id = @user_id
-    `);
-    res.json({ message: 'Event updated' });
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to update event', details: err.message });
-  }
-});
+    const pool = await poolPromise;
+    if (!pool) {
+        const newEvent = { event_id: nextEventId++, user_id, event_name, event_date, location, type };
+        mockEvents.push(newEvent);
+        return res.status(201).json({ message: 'Event added (Mock)', event: newEvent });
+    }
 
-// DELETE Event
-router.delete('/:id', authenticateToken, async (req, res) => {
-  const user_id = req.user.user_id;
-  const event_id = parseInt(req.params.id);
-  try {
-    const request = (await pool).request();
-    request.input('user_id', sql.Int, user_id);
-    request.input('event_id', sql.Int, event_id);
-    await request.query('DELETE FROM Events WHERE event_id = @event_id AND user_id = @user_id');
-    res.json({ message: 'Event deleted' });
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to delete event', details: err.message });
-  }
+    try {
+        const request = pool.request();
+        request.input('user_id', sql.Int, user_id);
+        request.input('event_name', sql.VarChar, event_name);
+        request.input('event_date', sql.Date, event_date);
+        request.input('location', sql.VarChar, location);
+        request.input('type', sql.VarChar, type);
+        
+        await request.query(`INSERT INTO Events (user_id, event_name, event_date, location, type) 
+                             VALUES (@user_id, @event_name, @event_date, @location, @type)`);
+        res.status(201).json({ message: 'Event added' });
+    } catch (err) {
+        res.status(500).json({ error: 'Failed', details: err.message });
+    }
 });
 
 module.exports = router;
-

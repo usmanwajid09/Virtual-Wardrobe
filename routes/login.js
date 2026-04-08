@@ -3,14 +3,31 @@ const router = express.Router();
 const sql = require('mssql');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const pool = require('../db');
+const poolPromise = require('../db');
+const usersRoute = require('./users'); // To access the shared mock database
 
 // POST /api/login
 router.post('/', async (req, res) => {
   const { email, password } = req.body;
 
+  const signToken = (user) => jwt.sign(
+    { user_id: user.user_id, username: user.username },
+    process.env.JWT_SECRET || 'fallback_secret',
+    { expiresIn: '24h' }
+  );
+
+  const pool = await poolPromise;
+  if (!pool) {
+      // In-Memory Mock Fallback
+      const user = usersRoute.mockUsers.find(u => u.email === email && u.password === password);
+      if (!user) {
+          return res.status(401).json({ error: 'Invalid mock credentials' });
+      }
+      return res.json({ token: signToken(user) });
+  }
+
   try {
-    const request = (await pool).request();
+    const request = pool.request();
     request.input('email', sql.VarChar, email);
     request.input('password', sql.VarChar, password);
 
@@ -25,19 +42,10 @@ router.post('/', async (req, res) => {
     }
 
     const user = result.recordset[0];
-
-    // Create JWT Token
-    const token = jwt.sign(
-      { user_id: user.user_id, username: user.username },
-      process.env.JWT_SECRET,
-      { expiresIn: '2h' }
-    );
-
-    res.json({ token });
+    res.json({ token: signToken(user) });
   } catch (err) {
     res.status(500).json({ error: 'Login failed', details: err.message });
   }
 });
 
 module.exports = router;
-
